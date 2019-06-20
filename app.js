@@ -53,8 +53,9 @@ app.use(function(err, req, res, next) {
 var mongoose = require("mongoose");
 
 //Set up default mongoose connection
-// var mongoDB = "mongodb://127.0.0.1/my_database";
-var mongoDB = "mongodb://127.0.0.1:27017/hello_mongo?gssapiServiceName=mongodb";
+var dev_db_url =
+  "mongodb://127.0.0.1:27017/hello_mongo?gssapiServiceName=mongodb";
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get the default connection
